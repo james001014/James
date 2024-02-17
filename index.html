@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/general.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Your description here">
+    <style>
+        .topLoading{
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 1);
+            z-index: 9999998;
+        }
+        .topLoading .topTips{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            padding: 15px;
+            border-radius: 4px;
+            font-size: 16px;
+            z-index: 9999998;
+            background-color: rgba(125,125,125,0.1);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <noscript style="position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: rgb(200,200,200);z-index: 9999999;">
+        <div style="position:absolute;background-color: white !important;color: black !important;left: 50%;top: 50%;transform: translateX(-50%) translateY(-50%);padding: 15px;border-radius: 4px;text-align: center;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="rgb(255, 152, 0)" viewBox="0 0 16 16">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+            </svg><br />
+            <p>您的浏览器不支持JavaScript或已禁用JavaScript。请启用JavaScript或更换支持JavaScript的浏览器。</p>
+        </div>
+    </noscript>
+    <div class="topLoading" id="topLoading">
+        <div class="loading"></div>
+        <div class="topTips">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="rgb(255, 152, 0)" viewBox="0 0 16 16">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+            </svg><br />
+            无法加载样式文件，请检查当前页面或稍后重试。
+        </div>
+    </div>
+    <nav id="nav">
+
+        <ul id="dnav">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 50 50">
+                <path d="M 10,20 Q 20,10 30,20 T 50,20" stroke="#FF6347" fill="transparent" stroke-width="2"/>
+                <path d="M 10,25 Q 20,15 30,25 T 50,25" stroke="#ADD8E6" fill="transparent" stroke-width="2"/>
+                <path d="M 10,30 Q 20,20 30,30 T 50,30" stroke="#90EE90" fill="transparent" stroke-width="2"/>
+            </svg>
+            <li>
+                <a class="showDropDown" id="HomeLink">首页</a>
+                <ul class="dropdown">
+                    <button class="button-card gradient-red-purple">
+                        <div class="button-text">
+                            Button Text
+                        </div>
+                    </button>
+                    <button class="button-card gradient-blue">
+                        <div class="button-text">
+                            Button Text
+                        </div>
+                    </button>
+                </ul>
+            </li>
+            <li>
+                <a class="showDropDown" id="HomeLink2">首页2</a>
+                <ul class="dropdown">
+                    <button class="button btn-primary">This is a button</button>
+                    Some things went wrong,please try again later,or you can report this error to us.
+                    <pre>
+                        OLIl1234567890
+                    </pre>
+                </ul>
+            </li>
+            <li><a href="#help" id="HelpLink">帮助</a></li>
+            <li><a href="aka.ms" id="MoreLink">更多</a></li>
+        </ul>
+        <button id="theme-switcher" class="top-theme-switcher" type="button">
+            <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+            <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" style="display: none;">
+                <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"/>
+            </svg>
+        </button>
+        <div class="rightbuttons">
+            <div>
+                <button class="showDropDown sbutton" style="margin: 0;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="rgb(var(--main-text))" viewBox="0 0 16 16">
+                        <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
+                        <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
+                    </svg>
+                </button>
+                <ul class="dropdown rightdropdown" style="padding: 10px;">
+                    <div class="selector-container">
+                        <div class="selector-item">
+                            <label for="font-selector">字体选择：</label>
+                            <select id="font-selector">
+                                <!-- 这里的选项将由JavaScript动态生成 -->
+                            </select>
+                        </div>
+                        <div class="selector-item">
+                            <label for="theme-selector">主题颜色：</label>
+                            <select id="theme-selector">
+                                <!-- 这里的选项将由JavaScript动态生成 -->
+                            </select>
+                        </div>
+                        <div class="selector-item">
+                            <label for="size-selector">字体大小：</label>
+                            <select id="size-selector">
+                                <option value="small">小</option>
+                                <option value="medium" selected>中</option>
+                                <option value="large">大</option>
+                                <option value="extra-large">特大</option>
+                            </select>
+                        </div>
+                        <div class="selector-item">
+                            <label for="font-style-selector">字体样式：</label>
+                            <select id="font-style-selector">
+                                <option value="normal">正常</option>
+                                <option value="bold">加粗</option>
+                                <option value="italic">斜体</option>
+                                <option value="bold-italic">加粗斜体</option>
+                            </select>
+                        </div>
+
+                        <div class="selector-item">
+                            <label for="text-align-selector">排列方式：</label>
+                            <select id="text-align-selector">
+                                <option value="left">左对齐</option>
+                                <option value="center">居中</option>
+                            </select>
+                        </div>
+
+                        <div class="selector-item">
+                            <label for="shortcut-selector">快捷键：</label>
+                            <select id="shortcut-selector">
+                                <option value="none">无</option>
+                                <option value="bold">加粗（Ctrl+B）</option>
+                                <option value="italic">斜体（Ctrl+I）</option>
+                                <option value="center">居中（Ctrl+E）</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <button class="button btn-leftbar btn-white dropdownbutton" data-info="新页面" onclick="showSnackbar('fuck','error','帮助',function(){ alert('你点击了确认按钮!');});">
+                        <svg xmlns="http://www.w3.org/2000/svg"  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06 .06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V22a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09a1.65 1.65 0 0 0-1-.38 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H2a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09a1.65 1.65 0 0 0 .38-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06c.26.26.61.44 1 .33h.01a1.65 1.65 0 0 0 1-1.51V2a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 .38 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H22a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-.38 1z"></path>
+                        </svg>
+                        <span>全部设置</span>
+                    </button>
+                    <button class="button btn-leftbar btn-white dropdownbutton" data-info="新页面" onclick="resetThemeSettings();">
+                        <svg xmlns="http://www.w3.org/2000/svg"  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06 .06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V22a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09a1.65 1.65 0 0 0-1-.38 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H2a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09a1.65 1.65 0 0 0 .38-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06c.26.26.61.44 1 .33h.01a1.65 1.65 0 0 0 1-1.51V2a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 .38 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H22a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-.38 1z"></path>
+                        </svg>
+                        <span>重置</span>
+                    </button>
+                </ul>
+            </div>
+            <div>
+                <button class="showDropDown sbutton" style="margin: 0;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="rgb(var(--main-text))" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                    </svg>
+                </button>
+                <ul class="dropdown rightdropdown">
+                    <button class="button btn-leftbar btn-white dropdownbutton" style="text-align: left;height: calc(var(--dropdownbutton-height) + 15px) !important;">
+                        <img alt="userImage" src="image/robot/Car-1.jpg" id="TopuserImage" style="width: 48px;height: 48px;border-radius: 50%;">
+                        <span style="margin-left: 5px;">
+                            <b style="font-size: 16px;">UserName</b><br /><label style="font-size: 13px;">UserMail</label>
+                        </span>
+                    </button>
+                    <button class="button btn-leftbar btn-white dropdownbutton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                        </svg>
+                        <span>Account Settings</span>
+                    </button>
+                    <button class="button btn-leftbar btn-white dropdownbutton new-page-button" id="SwitchAccountButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                        </svg>
+                        <span>Switch Account</span>
+                    </button>
+                    <div id="newPage" class="new-page">
+                        <div class="topdiv">
+                            <button id="backButton" class="back-button button btn-white sbutton">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M19 12H6M12 5l-7 7 7 7"></path>
+                                </svg>
+                            </button>
+                            <label>Switch Account</label>
+                        </div>
+                        <button class="button btn-leftbar btn-primary dropdownbutton" style="height: calc(var(--dropdownbutton-height) * 1.2 + 15px) !important;">
+                            <img alt="userImage" src="image/robot/Car-1.jpg" id="TopuserImage2" style="width: 48px;height: 48px;border-radius: 50%;">
+                            <span style="margin-left: 5px;">
+                                <b style="font-size: 16px;">UserName</b><br /><label style="font-size: 13px;">UserMail</label><br /><label style="font-size: 13px;">Logged</label>
+                            </span>
+                        </button>
+                        <button class="button btn-leftbar btn-white dropdownbutton" style="height: calc(var(--dropdownbutton-height) * 1.2 + 15px) !important;">
+                            <img alt="userImage" src="image/robot/TrafficLight-1.jpg" id="TopOtheruserImage" style="width: 48px;height: 48px;border-radius: 50%;">
+                            <span style="margin-left: 5px;">
+                                <b style="font-size: 16px;">UserName</b><br /><label style="font-size: 13px;">UserMail</label><br /><label style="font-size: 13px;">Logged</label>
+                            </span>
+                        </button>
+                        <button class="button btn-leftbar btn-white dropdownbutton modal-trigger" data-modal="modal-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+                                <path d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z"/>
+                            </svg>
+                            <span>Add Another Account</span>
+                        </button>
+                    </div>
+                    <button class="button btn-leftbar btn-white dropdownbutton new-page-button modal-trigger" data-modal="modal-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="red" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+                            <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+                        </svg>
+                        <span style="color: red;">Log Out</span>
+                    </button>
+                    <div id="newPage2" class="new-page">
+                        <div class="topdiv">
+                            <button id="backButton2" class="back-button button btn-white sbutton">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M19 12H6M12 5l-7 7 7 7"></path>
+                                </svg>
+                            </button>
+                            <label>Log Out</label>
+                        </div>
+                    </div>
+
+                </ul>
+            </div>
+        </div>
+        <ul id="mnav" style="display: none">
+            <button id="menu-button" class="menu-button button btn-white" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 50 50" >
+                    <path id="top-bar" d="M 10,15 H 40" stroke="rgb(var(--main-text))" stroke-width="2" stroke-linecap="round"/>
+                    <path id="middle-bar" d="M 10,25 H 40" stroke="rgb(var(--main-text))" stroke-width="2" stroke-linecap="round"/>
+                    <path id="bottom-bar" d="M 10,35 H 40" stroke="rgb(var(--main-text))" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </svg></button>
+        </ul>
+    </nav>
+    <div id="mmenu" class="mmenu">
+        <ul>
+            <li><a href="#home">首页1</a></li>
+            <li><a href="#home">首页2</a></li>
+            <li><a href="#help">帮助</a></li>
+            <li><a href="#more">更多</a></li>
+        </ul>
+    </div>
+    <div id="mmenuback" style="display: none" class="mmenuback" onclick="document.getElementById('menu-button').click()"></div>
+
+    <div id="left-sidebar">
+        <button id="expand-button" type="button" class="button btn-white btn-leftbar expandButton">
+            <svg id="expandIcon" class="bi bi-chevron-right" width="16" height="16" viewBox="0 0 15 15" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+            </svg>
+        </button><br />
+        <button class="sidebar-button button btn-primary btn-leftbar" id="HomeLeftBarButton" onclick="window.open('https://www.example.com',LinkTarget)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="40" height="40">
+                <defs>
+                    <linearGradient id="house-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#006CBE;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#003087;stop-opacity:1" />
+                    </linearGradient>
+                    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+                        <feOffset dx="2" dy="2" result="offsetblur"/>
+                        <feComponentTransfer>
+                            <feFuncA type="linear" slope="0.3"/>
+                        </feComponentTransfer>
+                        <feMerge>
+                            <feMergeNode/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                <!-- 房子的主体 -->
+                <rect x="10" y="30" width="40" height="25" fill="url(#house-gradient)" rx="2" ry="2" stroke="black" stroke-width="2" filter="url(#shadow)"/>
+                <!-- 房子的顶部 -->
+                <polygon points="11,30 30,10,49,30" fill="url(#house-gradient)" stroke="black" stroke-width="2" filter="url(#shadow)"/>
+                <!-- 门 -->
+                <rect x="18" y="40" width="10" height="15" fill="white" rx="0" ry="0" stroke="black" stroke-width="2" filter="url(#shadow)"/>
+                <!-- 窗户 -->
+                <rect x="35" y="35" width="10" height="10" fill="white" rx="2" ry="2" stroke="black" stroke-width="2" filter="url(#shadow)"/>
+            </svg>
+            <span class="text">首页</span>
+        </button>
+        <button class="sidebar-button button btn-white btn-leftbar" id="ELeftBarButton">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="40" height="40">
+                <defs>
+                    <linearGradient id="blue-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#13599e;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:rgb(25, 118, 210);stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <circle cx="50" cy="50" r="45" stroke="gray" fill="url(#blue-gradient)" stroke-width="4"/>
+                <polygon points="50,20 45,50 55,50" fill="red" transform="rotate(45 50 50)"/>
+                <polygon points="50,80 45,50 55,50" fill="white" transform="rotate(45 50 50)"/>
+                <circle cx="50" cy="50" r="40" stroke="black" fill="transparent" stroke-width="2"/>
+                <circle cx="50" cy="50" r="2" fill="black"/>
+                <!-- Add scale lines inside the inner circle -->
+                <g stroke="white" stroke-width="2">
+                    <!-- Add 48 scale lines, each rotated by 7.5 degrees -->
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(0 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(7.5 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(15 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(22.5 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(30 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(37.5 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(45 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(52.5 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(60 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(67.5 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(75 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(82.5 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(90 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(97.5 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(105 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(112.5 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(120 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(127.5 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(135 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(142.5 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(150 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(157.5 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(165 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(172.5 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(180 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(187.5 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(195 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(202.5 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(210 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(217.5 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(225 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(232.5 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(240 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(247.5 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(255 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(262.5 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(270 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(277.5 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(285 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(292.5 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(300 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(307.5 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(315 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(322.5 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(330 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(337.5 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="20" transform="rotate(345 50 50)"/>
+                    <line x1="50" y1="15" x2="50" y2="25" transform="rotate(352.5 50 50)"/>
+                </g>
+            </svg>
+            <span class="text">探索</span>
+        </button><br />
+        <!-- More buttons... -->
+    </div>
+
+    <div id="right-sidebar">
+        <!-- Content... -->
+    </div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <div class="modal-background" id="modal-background">
+        <div class="modal modal-dismissible" id="modal-1">
+            <div class="modal-content" id="modal-content-1">
+                1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />
+            </div>
+        </div>
+        <div class="modal modal-dismissible" id="modal-high-contrast" style="width: 300px;height: 100px;">
+            <div class="modal-content" id="modal-content-high-contrast">
+                <div class="modal-top">
+                    <label>高对比度模式</label>
+                    <button class="close-modal">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                        </svg>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <div class="modal" id="modal-2" style="width: 300px;height: 100px;">
+            <div class="modal-content" id="modal-content-2">
+                <div class="modal-top">
+                    <label>Are You Sure?</label>
+                    <button class="close-modal">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="rgb(var(--main-text))" class="bi bi-x" viewBox="0 0 16 16">
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="modal-content-inside">
+                    你确定要注销当前账户吗？
+                    <br />
+                    <div class="modal-bottom-buttons">
+                        <button class="button btn-white btn-f btn-small" onclick="CloseModal(this);">
+                            取消
+                        </button>
+                        <button class="button btn-red btn-f btn-small">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-key" viewBox="0 0 16 16">
+                                <path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8m4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5"/>
+                                <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                            </svg>
+                            &ensp;注销
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="modal-3" style="width: 300px;height: 300px;">
+            <div class="modal-content" id="modal-content-3">
+                <div class="modal-top">
+                    <label>添加账户</label>
+                    <button class="close-modal">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="rgb(var(--main-text))" class="bi bi-x" viewBox="0 0 16 16">
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="modal-content-inside" style="padding: 0 !important;">
+                    <div style="background-color: rgba(11,182,82,0.32);padding: 5px;">
+                        <b>为您自己添加一个辅助账户</b><br />
+                        <label style="font-size: 12px;">该账户可以是与朋友或家人之间使用的账户，或其他用途。</label><br />
+                        <button class="button btn-primary btn-small">了解更多</button>
+                    </div>
+                    <button class="button btn-white btn-leftbar btn-f btn-modal">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm4.5 0a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6m5 2.755C12.146 12.825 10.623 12 8 12s-4.146.826-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1z"/>
+                        </svg>
+                        注册辅助账户
+                    </button>
+                    <button class="button btn-white btn-leftbar btn-f">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+                            <path d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z"/>
+                        </svg>
+                        添加已有账户
+                    </button>
+                    <button class="button btn-white btn-leftbar btn-f">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                            <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
+                        </svg>
+                        注册新账户
+                    </button>
+                    <div class="modal-bottom-buttons">
+                        <button class="button btn-white btn-f btn-small" onclick="CloseModal(this);">
+                            取消
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="modal-trigger" data-modal="modal-1">Open Modal 1</button>
+
+    <div id="context-menu" class="context-menu">
+        <div id="LinkContextMenu">
+            <button class="context-menu-item button btn-white btn-leftbar" onclick="OpenLinkOnNewTab()">在新标签页中打开链接</button>
+            <button class="context-menu-item button btn-white btn-leftbar" onclick="OpenLinkOnNewWindow()">在新窗口中打开链接</button>
+            <button class="context-menu-item button btn-white btn-leftbar" onclick="CopyLink()">复制链接</button>
+        </div>
+        <div id="TextContextMenu">
+            <button class="context-menu-item button btn-white btn-leftbar">复制</button>
+            <button class="context-menu-item button btn-white btn-leftbar">搜索</button>
+            <button class="context-menu-item button btn-white btn-leftbar">使用Google搜索</button>
+        </div>
+        <div id="InputContextMenu">
+            <button class="context-menu-item button btn-white btn-leftbar">粘贴</button>
+            <button class="context-menu-item button btn-white btn-leftbar">剪切</button>
+        </div>
+        <button class="context-menu-item button btn-white btn-leftbar" onclick="window.history.back()">返回</button>
+        <button class="context-menu-item button btn-white btn-leftbar" onclick="window.history.forward()">前进</button>
+        <button class="context-menu-item button btn-white btn-leftbar" onclick="window.location.reload()">重新加载</button>
+    </div>
+    <div id="snackbar" class="snackbar">
+        <span id="snackbar-icon"></span><br />
+        <span id="snackbar-text"></span>
+        <span id="snackbar-number"></span>
+        <button id="snackbar-button" class="button btn-small btn-transparent" style="display: none;"></button>
+        <button id="snackbar-close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+            </svg>
+        </button>
+    </div>
+    <div id="tooltip" class="tooltip">
+        <span id="tooltip-text"></span>
+    </div>
+    <div class="tabs-container">
+        <div class="tabbutton-container full-width">
+            <button class="tab-button button btn-transparent DefaultSelection" data-panel="panel1">
+                选项1
+            </button>
+            <button class="tab-button button btn-transparent" data-panel="panel2">
+                选项2
+            </button>
+            <button class="tab-button button btn-transparent" data-panel="panel3">
+                选项3
+            </button>
+            <button class="tab-button button btn-transparent" data-panel="panel4">
+                选项4
+            </button>
+        </div>
+        <div class="tab-line"></div>
+        <div class="tabpanel-container">
+            <div class="tabpanel" data-name="panel1">
+                <div class="selectDiv" style="width: 300px;">
+                    <div class="selectBox">
+                        <label class="prompt">提示词</label>
+                    </div>
+                    <div class="selectDropDown">
+                        <div class="selectOption" data-value="1">选项1</div>
+                        <div class="selectOption" data-value="2">选项2</div>
+                        <div class="selectOption" data-value="3">选项3</div>
+                    </div>
+                </div>
+                <div class="selectDiv">
+                    <div class="selectBox">
+                        <label class="prompt">提示词</label>
+                    </div>
+                    <div class="selectDropDown">
+                        <div class="selectOption" data-value="3">选项1</div>
+                        <div class="selectOption" data-value="4">选项4</div>
+                    </div>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+            <div class="tabpanel" data-name="panel2">
+                <label class="checkbox-container">
+                    <span class="checkripple">
+                        <input type="checkbox" class="checkbox-input">
+                        <span class="checkbox-mark"></span>
+                        <span class="checkrippleripple"></span>
+                    </span>
+                    <span class="checkbox-text">复选框</span>
+                </label>
+                <label class="checkbox-container">
+                    <span class="checkripple">
+                        <input type="checkbox" class="checkbox-input">
+                        <span class="checkbox-mark"></span>
+                        <span class="checkrippleripple"></span>
+                    </span>
+                    <span class="checkbox-text">复选框</span>
+                </label>
+                <div class="loading"></div>
+            </div>
+            <div class="tabpanel" data-name="panel3">
+                <div class="radio-group">
+                    <label class="radio-container">
+                        <span class="radioripple">
+                            <input type="radio" class="radio-input" name="radio-group">
+                            <span class="radio-mark"></span>
+                            <span class="radiorippleripple"></span>
+                        </span>
+                        <span class="radio-text">选项1</span>
+                    </label>
+                    <label class="radio-container">
+                        <span class="radioripple">
+                            <input type="radio" class="radio-input" name="radio-group">
+                            <span class="radio-mark"></span>
+                            <span class="radiorippleripple"></span>
+                        </span>
+                        <span class="radio-text">选项2</span>
+                    </label>
+                </div>
+            </div>
+            <div class="tabpanel" data-name="panel4">
+                <div class="switch-container">
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                    <label class="switch-label">描述</label>
+                </div>
+                <div class="collapse-panel">
+                    <div class="panel-header button">
+                        <h3>面板标题</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="toggle-btn" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                        </svg>
+                    </div>
+                    <div class="panel-body">
+                        <p>这里是面板内容。</p>
+                        <p>这里是面板内容。</p>
+                        <p>这里是面板内容。</p>
+                        <p>这里是面板内容。</p>
+                        <p>这里是面板内容。</p>
+                        <p>这里是面板内容。</p>
+                        <p>这里是面板内容。</p>
+                        <p>这里是面板内容。</p>
+                    </div>
+                </div>
+                <div class="collapse-panel">
+                    <div class="panel-header button">
+                        <h3>面板标题</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="toggle-btn" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                        </svg>
+                    </div>
+                    <div class="panel-body">
+                        <p>这里是面板内容。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="js/general.js"></script>
+<script src="js/def.js"></script>
+</html>

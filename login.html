@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div id="verification">
+        <div class="topTrip">
+            <div style="font-size: 14px;color:white;margin-top: 15px;margin-left: 10px;">
+                <label id="TripWords1">Please Select All</label>
+                <br />
+                <label style="font-size: 28px !important;" id="imagesrighttype">Car</label>
+            </div>
+        </div>
+        <div class="bottomTrip">
+            <a href="#" style="line-height: 40px;margin-left: 8px;">Help</a>
+            <button class="button btn-primary" onclick="Verifyimage()" style="margin: 2px !important;position: absolute;left:150px;top: 0px;width: 100px;">Verify</button>
+        </div>
+        <div class="middleimages" id="middleimages">
+
+        </div>
+    </div>
+    <div id="login-box">
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 50 50">
+                <path d="M 10,20 Q 20,10 30,20 T 50,20" stroke="#FF6347" fill="transparent" stroke-width="2"/>
+                <path d="M 10,25 Q 20,15 30,25 T 50,25" stroke="#ADD8E6" fill="transparent" stroke-width="2"/>
+                <path d="M 10,30 Q 20,20 30,30 T 50,30" stroke="#90EE90" fill="transparent" stroke-width="2"/>
+            </svg>
+            <label>JEssay</label>
+        </div>
+        <div id="step1" class="step">
+            <h1>登录</h1>
+            <div class="input-container" style="width: calc(100% - 60px);">
+                <input type="text" class="input-field" id="UserNameInput" onchange="UserNameInputChange()">
+                <label for="UserNameInput" class="input-placeholder">电子邮箱、电话或用户名</label>
+                <div class="input-line"></div>
+            </div>
+            <label style="color: red;display: none;" id="step1Error"></label>
+            <div style="margin-top: 10px;"><label>没有账户?</label><a href="https://example.com">注册一个</a></div>
+            <button id="next1" class="next button btn-primary">Next</button>
+        </div>
+        <div id="step2" class="step">
+            <label id="step2-username-label">@</label>
+            <h1>输入密码</h1>
+            <div class="input-container" style="width: calc(100% - 60px);">
+                <input type="password" class="input-field" id="passwordInput" onchange="passwordInputChange()">
+                <label for="passwordInput" class="input-placeholder">密码</label>
+                <div class="input-line"></div>
+            </div>
+            <label style="color: red;display: none;" id="step2Error">用户名是必填项</label>
+            <div style="margin-top: 10px;"><a href="https://example.com">忘记密码</a></div>
+
+            <button id="next2" class="next button btn-primary">Next</button>
+            <button id="back1" class="back button btn-white">Back</button>
+        </div>
+        <div id="step3" class="step">
+            <h1 style="margin-bottom: 0 !important;">两步验证</h1>
+            <label>我们已经向您的邮箱发送了一个验证码，请在下方输<br />入您所接受到的验证码</label><button href="#" class="link-button">重新发送</button>
+            <br /><br />
+            <div class="input-container" style="width: calc(100% - 60px);">
+                <input type="text" class="input-field" id="verificationCodeInput" onchange="verificationCodeInputChange()">
+                <label for="verificationCodeInput" class="input-placeholder">请输入动态码</label>
+                <div class="input-line"></div>
+            </div>
+            <label style="color: red;display: none;" id="step3Error">验证码是必填项</label>
+            <button id="next3" class="next button btn-primary">Next</button>
+            <button id="back2" class="back button btn-white">Back</button>
+        </div>
+        <div id="step4" class="step">
+            <label><input type="checkbox" id="stay-logged-in"> Stay logged in</label>
+            <button id="back3" class="back">Back</button>
+        </div>
+    </div>
+</body>
+<script src="/js/general.js"></script>
+<script src="/js/login.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js"></script>
+</html>
