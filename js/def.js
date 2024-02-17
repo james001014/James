@@ -458,11 +458,6 @@ document.getElementById('moon-icon').addEventListener('transitionend', function(
 
 // 在页面加载时设置 sun-icon 的 display 属性为 'block'
 window.onload = function() {
-    var SlowTimeOut=setTimeout(function () {
-        showSnackbar('当前网络速度似乎较慢，请耐心等待。','info');
-    },10000);
-
-
     document.getElementById('sun-icon').style.display = 'block';
 
     var fontSelectorValue = getCookie('fontSelector');
@@ -508,6 +503,8 @@ window.onload = function() {
         }
     });
 
+
+
     var theme = getCookie('theme') || 'light';  // 如果cookie中没有用户的选择，使用默认的白色模式
 
     var sunIcon = document.getElementById('sun-icon');
@@ -531,13 +528,7 @@ window.onload = function() {
     document.documentElement.style.setProperty('--main-background', isDarkMode ? '0,0,0' : '255,255,255');
     document.documentElement.style.setProperty('--hover-color', isDarkMode ? '#393A3B' : 'rgb(228, 230, 233)');
 
-
-    var onpanels = document.querySelectorAll('.collapse-panel');
-    onpanels.forEach(panel => {
-        panel.querySelector('.panel-body').style.display="none";
-    });
     setTimeout(function() {document.getElementById("topLoading").style.display="none";},5);
-    clearTimeout(SlowTimeOut);
 };
 
 /*document.querySelectorAll('.rightbuttons button').forEach(button => {
@@ -1361,6 +1352,10 @@ selectOptions.forEach(function(selectOption) {
 // 获取所有的 Collapse 面板
 const panels = document.querySelectorAll('.collapse-panel');
 
+var onpanels = document.querySelectorAll('.collapse-panel');
+onpanels.forEach(panel => {
+    panel.querySelector('.panel-body').style.display="none";
+});
 // 给每个面板添加点击事件
 panels.forEach(panel => {
     const header = panel.querySelector('.panel-header');
