@@ -1,0 +1,264 @@
+body {
+    background: url('https://cdn.wallpaperhub.app/cloudcache/d/0/b/9/c/1/d0b9c1ea7dce2070b92db29ded557221f038de2a.jpg') no-repeat center center fixed;
+    background-size: cover;
+    overflow: hidden; /* 添加这一行 */
+}
+
+#login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.5);
+    padding: 30px;
+    width: 380px;
+    height: 280px;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 5px rgba(var(--main-text),0.5); /* 添加  影效果 */
+}
+
+#login-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    filter: blur(10px);
+    z-index: -1;
+}
+
+@supports (backdrop-filter: blur(10px)) {
+    #login-box::before {
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(10px);
+    }
+}
+
+#login-box > div:first-child svg,
+#login-box > div:first-child label {
+    vertical-align: middle;
+}
+
+.step {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* 修改这一行 */
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); /* 修改这一行 */
+}
+
+.step h1{
+    margin-top: 6px;
+    margin-bottom: 30px;
+}
+
+.step.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.step.left {
+    transform: translateX(-100%);
+}
+
+.step.right {
+    transform: translateX(100%);
+}
+
+.step.initial {
+    transform: translateX(100%);
+    opacity: 1; /* 添加这一行 */
+}
+
+.next{
+    position: relative;
+    top: 12%;
+    left: 300px;
+    width: 80px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.back{
+    position: relative;
+    top: 12%;
+    left: 130px;
+    width: 80px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* 省略其他样式 */
+
+#verification {
+    position: relative;
+    left: calc(50% - 132px);
+    top: calc(50% - 190px);
+    width: 265px;
+    height: 380px;
+    background-color: white;
+    z-index: 10000;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 5px rgba(var(--main-text),0.5);
+    display: none;
+}
+
+#verification .topTrip{;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 265px;
+    height: 80px;
+    background-color: var(--main-bt-color);
+    z-index: 10000;
+}
+#verification .bottomTrip{;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 265px;
+    height: 40px;
+    border-top: 3px solid #ccc;
+    z-index: 10000;
+}
+
+.middleimages{
+    height: 260px;
+    width: 265px;
+    position: absolute;
+    left: 0;
+    top: 80px;
+    padding: 8px 12px 12px;
+}
+.middleimages img{
+    height: 54px;
+    width: 54px;
+    margin: 1px 2px;
+    background-color: gray;
+    object-fit: cover;
+    cursor: pointer;
+    border: 1px solid gray;
+    transition: all 0.2s ease-in-out;
+}
+
+.middleimages img.selected{
+    border: 1px solid var(--main-bt-color);
+    transform: scale(0.8);
+}
+
+
+#verification button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#verification button:hover {
+    background-color: #0056b3;
+}
+
+/* 省略其他样式 */
+
+.link-button {
+    color: #0078D7;
+    text-decoration: none; /* 移除下划线 */
+    cursor: pointer; /* 鼠标悬停时变为手形 */
+    transition: 0.2s ease-in-out; /* 平滑颜色过渡 */
+    background-color: transparent;
+    border-radius:var(--border-radius);
+    border: none;
+    padding: 2px 4px;
+}
+
+.link-button:hover {
+    color: #004E8C;
+    background-color: rgba(16, 74, 125,0.1);
+}
+
+.link-button:active {
+    color: #104A7D !important;
+    filter: blur(0.01rem);
+}
+
+.country-select {
+    width: 100px;
+    margin-right: 10px;
+}
+
+#countrySelect {
+    order: 1;
+}
+
+#countrytrip {
+    order: 2;
+    margin-right: 10px;
+}
+
+#passwordInput {
+    order: 3;
+    flex-grow: 1;
+}
+
+.country-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.country-dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    z-index: 10001; /* 增加z-index值 */
+    background-color: #fff;
+}
+
+.country-dropdown-content a {
+    color: black;
+    padding: 3px;
+    text-decoration: none;
+    display: block;
+}
+
+.country-dropdown-content a:hover {
+    background-color: #f1f1f1; /* 鼠标悬停时的背景颜色 */
+    color: #333; /* 鼠标悬停时的文字颜色 */
+}
+
+.country-dropdown:hover .country-dropdown-content {
+    display: block;
+}
+
+.flag-icon {
+    width: 20px;
+    height: 15px;
+    margin-right: 5px;
+}
+
+.dropbtn{
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    width: 80px;
+    text-align: left;
+    position: relative;
+    padding: 2px 20px 2px 2px;
+}
+.dropbtn::after {
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid black;
+}
