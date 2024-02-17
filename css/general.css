@@ -1,0 +1,1748 @@
+@font-face {
+    font-family:Inter;
+    src:url("../font/InterVariable.ttf") format("opentype"),
+        url("../font/InterVariable.woff2") format("woff2"),
+        url("../font/InterVariable.woff") format("woff");
+}
+@font-face {
+    font-family:HanSansCN;
+    src:url("../font/SourceHanSansCN-Regular.otf"),
+        url("../font/SourceHanSansCN-Regular.woff2") format("woff2"),
+        url("../font/SourceHanSansCN-Regular.woff") format("woff");
+}
+@font-face {
+    font-family:OpenSans;
+    src:url("../font/Open_Sans.ttf"),
+        url("../font/Open_Sans.woff2") format("woff2"),
+        url("../font/Open_Sans.woff") format("woff");
+}
+@font-face {
+    font-family:XheiIntel;
+    src:url("../font/Xhei_Intel.ttc");
+}
+@font-face {
+    font-family:JBMono;
+    src:url("../font/JetBrainsMono-Regular.ttf");
+}
+/* CSS */
+:root {
+    --main-bt-color: rgb(25, 118, 210);
+    --main-bt: 25, 118, 210;
+    --hover-bt-color: #1668B8;
+    --active-bt-color: #13599e;
+    --active-color: #c9c9c9;
+    --light-bt-color: #70a0cb;
+    --main-text-color: #ffffff;
+    --primary-text-color: #fff;
+    --main-text: 0,0,0;
+    --hover-color: rgb(228, 230, 233);
+    --main-background: 255,255,255;
+    --border-radius: 4px;
+    --dropdown-height: 350px;
+    --shadow-color: #9D9FA1;
+    --context-menu-height: 250px;
+    --main-font: Inter;
+    --link-color: #007bff;
+    --border-color: rgb(228, 230, 233);
+    --dropdownbutton-height:50px;
+
+    --ripple-y: 0;
+    --ripple-x: 0;
+    --ripple-r-x: 0;
+    --ripple-r-y: 0;
+}
+
+html {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgb(var(--main-background));
+    color: var(--main-text-color);
+
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: auto;
+    transition: background-color 0.15s;
+}
+
+a,label,h1,h2,h3,h4,h5,h6,span,div,button,input,textarea,select {
+    font-family: var(--main-font),HanSansCN, sans-serif;
+}
+pre{
+    font-family: JBMono, monospace;
+}
+a{
+    color: var(--link-color);
+}
+
+
+.button {
+    position: relative;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px 20px;
+    box-shadow: 0px 3px 5px 2px rgba(var(--main-text),0.2); /* 添加阴影效果 */
+    transition: background-color 0.3s, box-shadow 0.3s; /* 添加过渡效果 */
+    color: #fff;
+    user-select: none;
+}
+
+.btn-primary{
+    background: var(--main-bt-color) !important;
+    color: var(--primary-text-color) !important;
+}
+.btn-primary:hover{
+    background-color: var(--hover-bt-color) !important;
+
+}
+.btn-primary:active{
+    background: var(--hover-bt-color);
+    box-shadow: 0px 1px 2px 1px rgba(var(--main-text),0.6) !important; /* 改变阴影效果 */
+}
+
+.btn-red{
+    background: #ff001a;
+    color: white;
+}
+.btn-red:hover{
+    background: #bb0014;
+}
+.btn-red:active{
+    background: #e11328;
+    box-shadow: 0px 1px 2px 1px rgba(var(--main-text),0.6) !important; /* 改变阴影效果 */
+}
+.btn-f{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-white{
+    background-color: rgb(var(--main-background));
+    color: var(--main-text-color);
+}
+.btn-white:hover{
+    background-color: var(--hover-color);
+}
+.btn-white:active{
+    background-color: rgba(var(--main-text),0.1) !important;
+}
+.btn-transparent{
+    background-color: transparent;
+    color: var(--main-text-color);
+    box-shadow: none !important;
+}
+.btn-transparent:hover{
+    background-color: rgba(121, 123, 125, 0.35);
+}
+.btn-transparent:active{
+    background-color: rgba(121, 123, 125, 0.5) !important;
+}
+
+.btn-leftbar {
+    width: 100% !important;
+    margin: 0;
+    text-align: left !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    height: calc(50px + ((var(--dropdownbutton-height) - 50px) * 1.2)) !important;
+    padding: 5px;
+    white-space:nowrap;
+    background-color: transparent;
+}
+.btn-leftbar:active{
+    box-shadow: none !important;
+}
+
+.button:hover {
+    box-shadow: 0px 2px 4px 2px rgba(var(--main-text),0.4); /* 改变阴影效果 */
+}
+
+.btn-small{
+    padding: 5px 10px !important;
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform-origin: center;
+    animation-fill-mode: forwards;
+}
+
+.ripple-primary {
+    background: rgba(255, 255, 255, 0.32); /* 白色波纹 */
+}
+
+.ripple-white {
+    background: rgba(125,125,125,0.32); /* 灰色波纹 */
+}
+
+
+
+.ripple.slow {
+    animation: rippleSlow 20s ease-out;
+}
+
+.ripple.fast {
+    animation: rippleFast 0.3s ease-out;
+}
+
+.ripple.slower {
+    animation: rippleSlower 0.5s ease-out;
+}
+
+@keyframes rippleSlow {
+    0% {
+        transform: scale(0);
+        opacity: 0.1;
+    }
+    8% {
+        transform: scale(0.4);
+        opacity: 1;
+    }
+    16% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.7);
+        opacity: 1;
+    }
+}
+
+@keyframes rippleFast {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@keyframes rippleSlower {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+.input-container {
+    position: relative;
+}
+
+.input-field {
+    box-sizing: border-box; /* 添加这一行 */
+    width: 100%; /* 添加这一行 */
+    border: none;
+    border-bottom: 3px solid var(--main-text-color);
+    outline: none;
+    transition: all 0.3s;
+    background-color: transparent;
+}
+
+.input-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #000;
+    transition: all 0.3s;
+    pointer-events: none;
+    transform-origin: left;
+}
+
+.input-field:focus {
+}
+
+.input-field:focus + .input-placeholder {
+    color: var(--main-bt-color);
+
+    transform: translateY(-20px) scale(0.8);
+}
+
+.input-line {
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 3px; /* 修改这里来改变线的粗细 */
+    background: var(--main-bt-color);
+
+}
+
+@keyframes input-line {
+    100% {
+        left: 0;
+        width: 100%;
+    }
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    box-shadow: 0px 2px 3px 1px rgba(var(--main-text), 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    background-color: rgba(var(--main-background), 0.67);
+    backdrop-filter: saturate(180%) blur(10px);
+    z-index: 9999;
+    user-select: none;
+}
+
+nav ul {
+    position: relative;
+    margin: 0px;
+    top: 5px;
+    bottom: 5px;
+    height: 40px;
+    line-height:40px;
+    white-space:nowrap;
+    padding: 0;
+}
+
+nav ul li {
+    list-style: none;
+    display: inline;
+    margin-left: 4px;
+    padding: 7px 10px;
+    border-radius: var(--border-radius);
+    transition: background-color 0.2s;
+}
+
+#dnav svg, #dnav li {
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+}
+
+nav ul li:hover {
+    background-color: var(--hover-color);
+}
+nav ul li:hover a {
+}
+
+nav ul li:active {
+    transform: scale(0.98);
+}
+
+
+nav a {
+    text-decoration:none;
+    color: var(--main-text-color);
+    user-select: none;
+}
+
+nav a:hover {
+
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: rgb(var(--main-background));
+    backdrop-filter: saturate(180%) blur(10px);
+    margin-top: 40px;
+    margin-left: 0px;
+    width: 100%;
+    height: var(--dropdown-height);
+    z-index: 10000;
+    box-shadow: 0px 5px 5px rgba(var(--main-text),0.15); /* 添加阴影效果 */
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    overflow-x: hidden !important;
+}
+
+@keyframes dropdownuptodown {
+    0% {
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+    99% {
+        height: var(--dropdown-height);
+        overflow: hidden;
+    }
+    100% {
+        display: block;
+        height: var(--dropdown-height);
+        overflow: auto;
+    }
+}
+@keyframes dropdowndowntoup {
+    0% {
+        display: block;
+        height: var(--dropdown-height);
+        overflow: hidden;
+    }
+    100% {
+        height: 0;
+        overflow: hidden;
+        display: none;
+    }
+}
+
+
+.mmenu{
+    z-index: 10002;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: calc(75% - 15px);
+    height: calc(100% - 50px);
+    background-color: rgb(var(--main-background));
+    transform: translateX(-100%);
+    transition: transform 0.2s ease-in-out;
+    overflow-y: auto;
+    box-shadow: none;
+}
+
+.mmenu.show{
+    transform: translateX(0);
+    box-shadow: 3px 5px 5px var(--shadow-color);
+}
+.mmenu.show body{
+    overflow-y: hidden;
+
+}
+
+.mmenuback{
+    z-index: 10001;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 50px);
+    background-color: rgba(0,0,0,0.26);
+    backdrop-filter: saturate(180%) blur(10px);
+}
+
+.showDropDown{}
+
+@media (max-width: 600px) {
+    #dnav {
+        display: none;
+    }
+    #mnav {
+        display: block !important;
+    }
+}
+@media (min-width: 600px) {
+    #mmenu{
+        display: none !important;
+    }
+    #mmenuback{
+        display: none !important;
+    }
+}
+
+.menu-button{
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: var(--border-radius) !important;
+    border: none;
+    margin-left: 5px;
+    padding: 0px !important;
+}
+
+.primaryactive {
+    background-color: rgba(13, 113, 200,0.2) !important; /* 蓝色背景 */
+}
+
+#left-sidebar, #right-sidebar {
+    border-radius: var(--border-radius);
+}
+
+#left-sidebar {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: calc(50px + ((var(--dropdownbutton-height) - 50px) * 1.2));
+    transition: width 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+    height: calc(100% - 50px);
+    border-right: 2px solid var(--hover-color);
+    box-shadow: 5px 0 10px -5px var(--shadow-color);
+}
+
+#right-sidebar {
+    position: absolute;
+    width: 150px;
+    transition: width 0.2s;
+    height: calc(100% - 50px);
+    top: 50px;
+    right: 0;
+    border-left: 2px solid var(--hover-color);
+    box-shadow: 5px 0 10px -5px var(--shadow-color);
+    z-index: -1;
+}
+
+#left-sidebar.expanded {
+    width: 200px;
+}
+
+.sidebar-button .text {
+    display: none;
+    top: 18px;
+    left: 50px;
+    position: absolute;
+}
+
+.sidebar-button {
+    position: relative;
+}
+
+.sidebar-button.expanded .text {
+    display: inline;
+    line-height: calc(100% + (var(--dropdownbutton-height) - 50px));
+    margin-left: calc((var(--dropdownbutton-height) - 50px) * 1.2);
+}
+
+.sidebar-button .text {
+    display: none;
+}
+
+
+
+
+@media (min-width: 800px) {
+    #left-sidebar {
+        width: calc(50px + ((var(--dropdownbutton-height) - 50px) * 1.2));
+    }
+
+    /*.sidebar-button .text {
+        display: inline;
+    }*/
+}
+
+@media (max-width: 500px) {
+    #left-sidebar, #right-sidebar {
+        display: none;
+    }
+}
+#menu-button svg path:nth-child(1) {
+    transform-origin: left;
+}
+
+#menu-button svg path:nth-child(3) {
+    transform-origin: left;
+}
+
+@keyframes rotateInTop {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: translateY(10px) rotate(-45deg);
+    }
+}
+
+@keyframes rotateInBottom {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: translateY(-11px) rotate(45deg);
+    }
+}
+
+@keyframes rotateOutTop {
+    0% {
+        transform: translateY(11px) rotate(-45deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes rotateOutBottom {
+    0% {
+        transform: translateY(-11px) rotate(45deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.context-menu {
+    display: none;
+    position: absolute;
+    background-color: rgba(var(--main-background),0.72);
+    backdrop-filter: saturate(180%) blur(10px);
+    border: 1px solid var(--border-color);
+    padding: 0;
+    width: 0;
+    height: 0;
+    transition: height 0.15s cubic-bezier(0.23, 1, 0.32, 1),width 0.15s cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0px 1px 2px 1px rgba(var(--main-text),0.2);
+    z-index: 19999;
+}
+.context-menu.contextshow {
+    width: 150px !important;
+    height: var(--context-menu-height);
+}
+
+.context-menu-item {
+    display: block;
+    margin: 0;
+    cursor: pointer;
+    border:none;
+    outline: none;
+    width: 100%;
+    height: 30px !important;
+    white-space:nowrap;
+    font-size: 14px !important;
+}
+
+.expandButton svg{
+    transition: transform 0.3s ease-in-out;
+    transform: rotate(0deg);
+    margin-left: 5px;
+    margin-top: 2px;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: var(--hover-color);
+}
+.expandButton svg.expanded{
+    transform: rotate(180deg);
+}
+
+/* CSS */
+.button-card {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background 0.5s;
+    cursor: pointer;
+    position: relative; /* 添加这一行 */
+    overflow: hidden; /* 添加这一行 */
+    width: 150px;
+    height: 150px;
+    background-color: rgb(var(--main-background));
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 5px rgba(var(--main-text),0.5); /* 添加阴影效果 */
+    border: 2px solid var(--border-color);
+    outline: none;
+}
+.button-card .button-text {
+    position: relative;
+    z-index: 10000;
+    color: var(--main-text-color);
+}
+.aura {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background:rgba(var(--main-bt),0.6);
+    box-shadow: 0 0 75px 60px rgba(var(--main-bt),0.7);
+    pointer-events: none;
+    z-index: 999; /* 修改这一行 */
+    transition: opacity 0.15s ease-in-out;
+    opacity: 0;
+}
+
+.aura.clicked {
+    animation: auraClick 0.5s forwards;
+}
+
+@keyframes auraClick {
+    0% {
+        background:rgba(var(--main-bt),0.6);
+        box-shadow: 0 0 75px 60px rgba(var(--main-bt),0.7);
+    }
+    100% {
+        background:rgba(var(--main-bt),1);
+        box-shadow: 0 0 180px 140px rgba(var(--main-bt),1);
+    }
+}
+@keyframes auraUnclick {
+    0% {
+        background:rgba(var(--main-bt),1);
+        box-shadow: 0 0 180px 140px rgba(var(--main-bt),1);
+    }
+    100% {
+        background:rgba(var(--main-bt),0.6);
+        box-shadow: 0 0 75px 60px rgba(var(--main-bt),0.7);
+    }
+}
+
+.aura.unclicked {
+    animation: auraUnclick 0.5s forwards;
+}
+
+#theme-switcher {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#theme-switcher svg {
+    width: 24px;
+    height: 24px;
+}
+#moon-icon {
+    fill: #fff !important; /* 设置图标边框颜色为白色 */
+}
+
+#theme-switcher {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    transition: background-color 0.15s ease-in-out;
+    border-radius: 50%;
+}
+#theme-switcher:hover {
+    background-color: var(--hover-color);
+}
+#theme-switcher:active {
+    transform: scale(0.9);
+}
+
+#sun-icon, #moon-icon {
+    width: 24px;
+    height: 24px;
+    transition: opacity 0.2s ease-in-out;
+    opacity: 0;
+}
+
+#sun-icon {
+    opacity: 1;
+}
+#moon-icon{
+    margin: 5px;
+}
+
+.top-theme-switcher{
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    z-index: 10000;
+}
+
+.rightbuttons{
+    position: fixed;
+    top: 5px;
+    right: 46px;
+    z-index: 10000;
+    height: 40px;
+    padding: 0;
+    display: flex; /* 添加这一行 */
+    flex-wrap: nowrap; /* 添加这一行 */
+}
+.rightbuttons .sbutton{
+    margin: 0 1px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 0.15s ease-in-out;
+    display: flex; /* 添加这一行 */
+    align-items: center; /* 添加这一行 */
+    justify-content: center; /* 添加这一行 */
+}
+.rightbuttons button:hover{
+    background-color: var(--hover-color);
+}
+.rightbuttons button:active{
+}
+.rightbuttons div{
+    border-radius: 50%;
+}
+.rightbuttons ul{
+    position: fixed;
+    top: 55px;
+    right: 5px;
+    width: calc(225px + ((var(--dropdownbutton-height) - 50px) * 1.5));
+    height: 200px;
+    background-color: rgb(var(--main-background));
+    border-radius: var(--border-radius);
+    box-shadow: 0 1px 7px rgba(var(--main-text),0.5); /* 添加阴影效果 */
+    border: 2px solid var(--border-color);
+    outline: none;
+    display: none;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    z-index: 10000;
+}
+
+.dropdown .button.btn-leftbar.dropdownbutton {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 12px;
+    margin: 0 !important;
+    height: var(--dropdownbutton-height) !important;
+}
+
+.dropdown .button.btn-leftbar.dropdownbutton svg {
+    margin-right: 5px;
+}
+.dropdown .button.btn-leftbar.dropdownbutton span {
+    font-size: 15px;
+}
+
+.new-page {
+    position: absolute;
+    top: 0;
+    width: 100%; /* 占据整个dropdown的宽度 */
+    right: -100%; /* 初始时在屏幕右侧 */
+    transition: right 0.2s; /* 动画效果 */
+    background-color: rgb(var(--main-background));
+    border-radius: 0 !important;
+    z-index: 10000;
+}
+
+.new-page.active {
+    right: 0; /* 当有active类时，滑入屏幕 */
+}
+
+.back-button {
+    box-shadow: none !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 !important;
+}
+
+.topdiv {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+
+.modal-background {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    background-color: rgba(var(--main-background), 0.5);
+    z-index: 10000;
+    transition: opacity 80ms ease-in-out;
+    opacity: 0;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(var(--main-background));
+    padding: 1em;
+    border-radius: 4px;
+    z-index: 100000;
+    width: auto;
+    max-width: calc(100% - 40px);
+    min-width: 150px;
+    height: auto;
+    min-height: 10px;
+    max-height: calc(100% - 80px);
+    box-shadow: 0 1px 7px rgba(var(--main-text),0.5); /* 添加阴影效果 */
+    border: 2px solid var(--border-color);
+    outline: none;
+    opacity: 0;
+    overflow: auto;
+}
+
+.modal-content {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.modal-background.active {
+    opacity: 1;
+}
+
+.modal.active {
+    opacity: 1;
+}
+
+.modal-content {
+    width: 100%;
+    height: auto;
+    overflow-y: auto;
+}
+.modal-top{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    height: 40px;
+    left: 0;
+    top: 0;
+    width: calc(100% - 10px);
+    padding: 5px;
+}
+.modal-top label{
+    margin-left: 5px;
+}
+
+.modal-content-inside{
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100% - 60px);
+    padding: 5px;
+}
+
+.modal-bottom-buttons{
+    display: flex;
+    align-items: center;
+    position: fixed;
+    height: 38px;
+    right: 5px;
+    bottom: 0;
+    width: auto;
+    max-width: calc(100% - 10px);
+    padding: 5px;
+}
+.modal-bottom-buttons button{
+    height: 36px;
+    margin: 0 2px;
+
+}
+
+.close-modal{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 0.15s ease-in-out;
+    display: flex; /* 添加这一行 */
+    align-items: center; /* 添加这一行 */
+    justify-content: center; /* 添加这一行 */
+    position: absolute;
+    right: 5px;
+}
+.close-modal:hover{
+    background-color: var(--hover-color);
+}
+.close-modal:active{
+    background-color: var(--active-color);
+}
+.close-modal svg{
+    width: 24px;
+    height: 24px;
+}
+
+select {
+    border: 2px solid var(--border-color);
+    background-color: rgb(var(--main-background));
+    font-size: 16px;
+    padding: 5px;
+    color: var(--main-text-color);
+    border-radius: var(--border-radius);
+    outline: none;
+    transition: all 0.15s;
+}
+
+select:hover{
+    background-color: var(--hover-color);
+}
+select:focus {
+    box-shadow: 0 0 0 3px var(--main-bt-color);
+}
+#theme-switcher:disabled{
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: rgb(255,255,0);
+}
+
+.selector-container {
+    align-items: center;
+}
+
+.selector-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+.selector-item select {
+    width: 100%; /* 添加这一行 */
+}
+
+.sidebar-button svg{
+    width: calc(40px + ((var(--dropdownbutton-height) - 50px) * 1.2));
+    height: calc(40px + ((var(--dropdownbutton-height) - 50px) * 1.2));
+}
+
+#expandIcon{
+    width: calc(16px + ((var(--dropdownbutton-height) - 50px) * 1.1));
+    height: calc(16px + ((var(--dropdownbutton-height) - 50px) * 1.1));
+}
+
+.snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 8px 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: -20px;
+    font-size: 17px;
+    opacity: 0;
+    transition: all 0.15s linear;
+    border-radius: var(--border-radius);
+    backdrop-filter: saturate(180%) blur(10px);
+    display: flex;
+    align-items: center;
+}
+
+
+.snackbar.show {
+    visibility: visible;
+    bottom: 20px;
+    opacity: 1;
+}
+
+#snackbar-close {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    color: rgb(var(--main-text));
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    margin-left: 12px;
+    background-color: transparent;
+    right: 6px;
+    text-align: center;
+    line-height: 32px;
+    transition: all 0.1s ease-in-out;
+}
+#snackbar-close:hover {
+    background-color: rgba(120,120,120,0.32);
+}
+#snackbar-close:active {
+    background-color: rgba(120,120,120,0.52) !important;
+}
+#snackbar-button{
+    position: absolute;
+    right: 40px!important;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto !important;
+}
+
+.snackbar.error {
+    background-color: rgba(244, 67, 54, 0.6);
+    padding: 8px 16px;
+}
+
+.snackbar.warning {
+    background-color: rgba(255, 152, 0, 0.6);
+    padding: 8px 16px;
+}
+
+.snackbar.info {
+    background-color: rgba(33, 150, 243, 0.6);
+    padding: 8px 16px;
+}
+
+.snackbar.standard {
+    background-color: rgba(76, 175, 80, 0.6);
+    padding: 8px 16px;
+}
+
+.snackbar.none {
+    background-color: rgba(125, 125, 125, 0.6);
+    padding: 16px 16px !important;
+}
+
+#snackbar-icon{
+    margin: 0;
+    padding: 2px 0 0;
+}
+
+.tooltip {
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 12px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 10005;
+}
+
+.tooltip.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+#snackbar-text{
+    margin-left: 12px;
+}
+
+#snackbar-number{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--primary-text-color);
+    margin-left: 12px;
+    background-color: rgba(var(--main-bt),0.6);
+    right: 6px;
+    text-align: center;
+    line-height: 32px;
+    z-index: 9999;
+    transition: all 0.15s ease-in-out;
+}
+
+#snackbar-button {
+    display: none;
+    left: auto !important;
+    /* 其他样式... */
+}
+
+.tab-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    padding: 20px 15px;
+    height: 32px;
+    text-align: center;
+    line-height: 32px;
+    margin: 0 2px;
+}
+.tabs-container{
+    margin:53px;
+    position: relative;
+}
+.tabbutton-container{
+    display: flex;
+    flex-wrap: nowrap;
+}
+.tab-line{
+    height: 4px;
+    width: 30px;
+    background-color: var(--main-bt-color);
+    margin: 0;
+    padding: 0;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+    transition: all 0.15s;
+}
+.tabpanel-container{
+    width: 100%;
+}
+.full-width {
+    display: flex;
+}
+.full-width button {
+    flex-grow: 1;
+}
+
+.checkbox-input {
+    display: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.checkbox-container{
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    display: flex;
+    margin: 15px 15px;
+    position: relative;
+}
+
+.checkbox-mark {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgb(var(--main-text));
+    border-radius: 4px;
+    overflow: hidden;
+    transition: border 0.15s ease;
+}
+
+.checkbox-mark::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-bt-color);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.checkbox-input:checked ~ .checkbox-mark::before {
+    opacity: 1;
+}
+.checkbox-input:checked ~ .checkbox-mark {
+    border: 2px solid var(--main-bt-color);
+}
+
+.checkbox-mark::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    clip-path: inset(100% 0 0 0); /* 初始时，对勾被完全剪切 */
+    transition: clip-path 0.3s; /* 添加过渡效果 */
+}
+
+.checkbox-input:checked ~ .checkbox-mark::after {
+    clip-path: inset(0 0 0 0); /* 当复选框被选中时，对勾完全可见 */
+}
+
+.checkbox-text{
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-touch-callout: none;
+}
+
+.checkripple{
+    position: relative;
+    border-radius: 50%;
+    background-color: rgba(125,125,125,0);
+    width: 24px;
+    height: 24px;
+    top: -5px;
+    left: -5px;
+    padding: 6px;
+    overflow: hidden;
+    transition: background-color 0.15s;
+}
+.checkripple:hover{
+    background-color: rgba(125,125,125,0.2);
+}
+.checkrippleripple{
+    position: absolute;
+    left: calc(var(--ripple-x) - 100%);
+    top: calc(var(--ripple-y) - 100%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: rgba(125, 125, 125, 0.2);
+    transform: translate(calc(var(--ripple-x) - 50%), calc(var(--ripple-y) - 50%));
+    display: none;
+    z-index: 9999;
+    animation: checkripplebigger 0.3s ease-out forwards;
+}
+@keyframes checkripplebigger {
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.radio-input {
+    display: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.radio-container{
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    display: flex;
+    margin: 15px 15px;
+    position: relative;
+}
+
+.radio-mark {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgb(var(--main-text));
+    border-radius: 50%;
+    overflow: hidden;
+    transition: border 0.15s ease;
+}
+
+.radio-mark::before {
+    content: "";
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    transform: translateX(21%) translateY(21%) scale(0);
+    background-color: var(--main-bt-color);
+    opacity: 0;
+    transition: opacity 0.15s ease,transform 0.15s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.radio-input:checked ~ .radio-mark::before {
+    transform: translateX(21%) translateY(21%) scale(1);
+    opacity: 1;
+}
+.radio-input:checked ~ .radio-mark {
+    border: 2px solid var(--main-bt-color);
+}
+
+.radio-text{
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-touch-callout: none;
+}
+
+.radioripple{
+    position: relative;
+    border-radius: 50%;
+    background-color: rgba(125,125,125,0);
+    width: 24px;
+    height: 24px;
+    top: -5px;
+    left: -5px;
+    padding: 6px;
+    overflow: hidden;
+    transition: background-color 0.15s;
+}
+.radioripple:hover{
+    background-color: rgba(125,125,125,0.2);
+}
+
+.radiorippleripple{
+    position: absolute;
+    left: calc(var(--ripple-r-x) - 100%);
+    top: calc(var(--ripple-r-y) - 100%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: rgba(125, 125, 125, 0.2);
+    transform: translate(calc(var(--ripple-r-x) - 50%), calc(var(--ripple-r-y) - 50%));
+    display: none;
+    z-index: 9999;
+    animation: checkripplebigger 0.3s ease-out forwards;
+}
+.selectDiv{
+    background-color: transparent;
+    width: auto;
+    position: relative;
+}
+.selectDiv .selectBox{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    margin: 10px 10px 0 10px;
+    border: 2px solid rgba(125,125,125,0.5);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    background-color: rgb(var(--main-background));
+    transition: all 0.15s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+}
+.selectDiv .selectBox *{
+    cursor: pointer;
+}
+.selectDiv .selectDropDown.active ~ .selectBox::after{
+    transform: rotate(180deg) !important;
+}
+.selectDiv .selectBox::after{
+    content: "";
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    width: 8px;
+    height: 8px;
+    border-right: 1px solid rgb(var(--main-text));
+    border-bottom: 1px solid rgb(var(--main-text));
+    border-left: 1px solid transparent;
+    border-top: 1px solid transparent;
+    transform: rotate(45deg);
+}
+.selectDiv .selectBox:hover{
+    background-color: rgba(125,125,125,0.2);
+    border: 2px solid transparent;
+}
+.selectDiv .selectBox:active{
+    background-color: rgba(125,125,125,0.35);
+    border: 2px solid transparent;
+}
+.selectDiv .selectBox.bluebottom{
+    border-bottom: 2px solid var(--main-bt-color) !important;
+}
+.selectDiv .selectDropDown{
+    display: none;
+    transition: all 0.15s cubic-bezier(0.23, 1, 0.32, 1);
+    overflow: hidden;
+    margin: 0 10px 0 10px;
+    background-color: rgba(var(--main-background),0.72);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    backdrop-filter: saturate(180%) blur(10px);
+    border-left: 2px solid var(--hover-color);
+    border-right: 2px solid var(--hover-color);
+    border-bottom: 2px solid var(--hover-color);
+    border-top: none;
+    position: absolute;
+    width: calc(100% - 24px);
+    z-index: 10006;
+    height: auto;
+    transform: translateY(-20px);
+    opacity: 0;
+}
+.selectDiv .selectDropDown.active{
+    display: block;
+    transform: translateY(0);
+    opacity: 1;
+}
+.selectDiv .selectDropDown .selectOption{
+    margin: 0;
+    padding: 10px 20px;
+    background-color: transparent;
+    border: none;
+    transition: background-color 0.15s ease-out;
+    overflow: hidden;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: pointer;
+}
+.selectDiv .selectDropDown .selectOption:hover{
+    margin: 0;
+    padding: 10px 20px;
+    border: none;
+    background-color: rgba(125,125,125,0.2);
+}
+
+.selectripple{
+    position: absolute;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(to right, rgba(125,125,125,0.2) 0%, rgba(125,125,125,0.3) 50%, rgba(125,125,125,0.2) 100%);
+    left: 0;
+    top: 0;
+    z-index: 10000;
+    transform: scale(0);
+    animation: selectripplebigger 0.25s ease-out forwards;
+}
+@keyframes selectripplebigger{
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.switch-container {
+    display: flex;
+    align-items: center;
+}
+
+.switch-label {
+    font-family: 'Roboto', sans-serif;
+    margin-right: 10px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(125,125,125,0.4);
+    -webkit-transition: .2s;
+    transition: .2s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 24px;
+    width: 24px;
+    left: 4px;
+    bottom: 5px;
+    background-color: white;
+    -webkit-transition: .2s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: .2s cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: 12px;
+}
+.slider:hover:before{
+    background-color: rgb(240,243,245) !important;
+}
+.slider:active:before{
+    width: 32px;
+}
+.switch-container input:checked + .slider {
+    background-color: var(--main-bt-color);
+}
+
+.switch-container input:focus + .slider {
+    box-shadow: 0 0 1px var(--main-bt-color);
+}
+
+.switch-container input:checked + .slider:before {
+    -webkit-transform: translateX(28px);
+    -ms-transform: translateX(28px);
+    transform: translateX(28px);
+}
+.switch-container input:checked + .slider:active:before {
+    -webkit-transform: translateX(20px) !important;
+    -ms-transform: translateX(20px) !important;
+    transform: translateX(20px) !important;
+}
+.collapse-panel {
+    margin-bottom: 10px;
+    border-radius: var(--border-radius);
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 10px;
+    background-color: rgba(125,125,125,0.1);
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    box-shadow: none !important;
+    color: rgb(var(--main-text));
+    border: 2px solid #ccc;
+    transition: all 0.15s ease-in;
+}
+
+.panel-body {
+    padding: 10px;
+    display: none;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.15s ease-in;
+    border: 2px solid #ccc;
+    border-top: 0 solid #ccc !important;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.panel-body.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 展开状态下的样式 */
+.panel-header.active {
+    background-color: rgba(var(--main-bt),0.2);
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.panel-header .toggle-btn {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 14px;
+    color: rgba(var(--main-text),0.6);
+    margin-right: 5px;
+}
+
+.panel-header .toggle-btn:hover {
+    text-decoration: underline;
+    color: rgba(var(--main-text),0.75);
+}
+/* 进度指示器容器样式 */
+.progress-container {
+    width: 100%;
+    height: 4px;
+    background-color: rgba(125,125,125,0.1);
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+/* 进度条样式 */
+.progress-bar {
+    height: 100%;
+    background-color: var(--main-bt-color);
+    animation: progressAnimation 2.5s infinite linear; /* 添加动画效果 */
+    position: absolute;
+    left: 0;
+    border-radius: 8px;
+}
+
+@keyframes progressAnimation {
+    0% {
+        width: 0;
+        left: 0;
+    }
+    5% {
+        width: 10%;
+        left: 5%;
+    }
+    10% {
+        width: 40%;
+        left: 10%;
+    }
+    15% {
+        width: 45%;
+        left: 20%;
+    }
+    20% {
+        width: 30%;
+        left: 40%;
+    }
+    40% {
+        width: 15%;
+        left: 85%;
+    }
+    50% {
+        width: 5%;
+        left: 95%;
+    }
+    60% {
+        width: 10%;
+        left: 100%;
+    }
+    60.1% {
+        width: 10%;
+        left: 0;
+    }
+    80% {
+        width: 60%;
+        left: 20%;
+    }
+    100% {
+        width: 5%;
+        left: 100%;
+    }
+}
+
+
+
+.loading{
+    animation: loader 5000ms infinite linear;
+    border-radius: 100%;
+    border: 6px solid transparent;
+    border-top-color: var(--main-bt-color);
+    color: transparent;
+    display: inline-block;
+    line-height: 1.2;
+    width: 50px;
+    height: 50px;
+}
+@keyframes loader {
+    0% {  transform: rotate(0deg);border-top-color: rgb(25, 118, 210);  }
+    16% {  transform: rotate(360deg);border-top-color: rgb(0, 200, 83);  }
+    33% {  transform: rotate(720deg);border-top-color: rgb(255, 0, 0);  }
+    49% {  transform: rotate(1080deg);border-top-color: rgb(204, 204, 0);  }
+    67% {  transform: rotate(1440deg); border-top-color: rgb(255, 105, 180); }
+    83% {  transform: rotate(1800deg); border-top-color: rgb(165, 42, 42); }
+    100% {  transform: rotate(2160deg); border-top-color: rgb(25, 118, 210); }
+}
+.topLoading .topTips{
+    display: none;
+}
+.topLoading .loading{
+    position: absolute;
+    left: calc(50% - 30px);
+    top: calc(50% - 30px);
+    transform: translate(-50%, -50%);
+}
